@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   square: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
     backgroundColor: "red",
     margin: 2,
     borderRadius: 10,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   squareText: {
     color: "white",
     textAlign: "center",
-    fontSize: 30,
-    lineHeight: 50,
+    fontSize: 50,
+    lineHeight: 100,
   },
 });
