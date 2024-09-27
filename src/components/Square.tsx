@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { validateNumbers } from "../utils/validateNumbers";
 
 interface SquareProps {
@@ -7,18 +7,33 @@ interface SquareProps {
 }
 
 export function Square({ numbers }: SquareProps) {
+  const [clickedSquares, setClickedSquares] = useState<number[]>([]);
+  const handleSquareClick = (number_index: number) => {
+    setClickedSquares((prev) => {
+      if (prev.includes(number_index)) {
+        return prev.filter((index) => index !== number_index);
+      } else {
+        return [...prev, number_index];
+      }
+    });
+  };
+
   validateNumbers(numbers);
   return (
     <View>
       {numbers.map((number_rows, row_index) => (
         <View style={styles.squareContainer} key={row_index}>
           {number_rows.map((number, index) => {
-            const number_index = numbers.length * (row_index - 1) + index;
-            // console.log(number_index);
+            const number_index = numbers.length * row_index + index;
+            const isClicked = clickedSquares.includes(number_index);
             return (
-              <View style={styles.square} key={number_index}>
+              <TouchableOpacity
+                style={[styles.square, isClicked && styles.squareClicked]}
+                key={number_index}
+                onPress={() => handleSquareClick(number_index)}
+              >
                 <Text style={styles.squareText}>{number}</Text>
-              </View>
+              </TouchableOpacity>
             );
           })}
         </View>
@@ -37,6 +52,9 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     margin: 2,
     borderRadius: 10,
+  },
+  squareClicked: {
+    backgroundColor: 'blue',
   },
   squareText: {
     color: "white",
