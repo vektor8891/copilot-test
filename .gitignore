@@ -36,3 +36,6 @@ yarn-error.*
 
 # VS Code workspace files
 *.code-workspace
+
+# coverage
+coverage/
