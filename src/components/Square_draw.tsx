@@ -24,6 +24,7 @@ export function Square({ numbers }: SquareProps) {
                 if (boxLayout) {
                     const adjustedX = pageX - boxLayout.x;
                     const adjustedY = pageY - boxLayout.y;
+                    setCurrentCoordinates({ x: adjustedX, y: adjustedY });
                     const startPoint = findClosestPoint(adjustedX, adjustedY);
                     if (startPoint) {
                         activePoints.current.push(startPoint);
@@ -34,10 +35,10 @@ export function Square({ numbers }: SquareProps) {
                 const { pageX, pageY } = evt.nativeEvent;
                 const boxLayout = boxLayoutRef.current;
                 if (boxLayout) {
-                    const locationX = pageX - boxLayout.x;
-                    const locationY = pageY - boxLayout.y;
-                    setCurrentCoordinates({ x: locationX, y: locationY });
-                    const endPoint = findClosestPoint(locationX, locationY);
+                    const adjustedX = pageX - boxLayout.x;
+                    const adjustedY = pageY - boxLayout.y;
+                    setCurrentCoordinates({ x: adjustedX, y: adjustedY });
+                    const endPoint = findClosestPoint(adjustedX, adjustedY);
                     if (activePoints.current.length == 0) {
                         if (endPoint) {
                             activePoints.current.push(endPoint);
@@ -54,7 +55,7 @@ export function Square({ numbers }: SquareProps) {
                                 activePoints.current.push(endPoint);
                             }
                         } else {
-                            setCurrentLine({ x1: startPoint.x, y1: startPoint.y, x2: locationX, y2: locationY });
+                            setCurrentLine({ x1: startPoint.x, y1: startPoint.y, x2: adjustedX, y2: adjustedY });
                         }
                     }
                 }
