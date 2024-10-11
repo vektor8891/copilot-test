@@ -13,7 +13,7 @@
     "predeploy": "expo export -p web",
     "lint": "eslint --ext .js,.ts,.tsx,.mdx --max-warnings 0",
     "eslint:github-action": "eslint src/",
-    "lint:fix": "npm run lint -- --fix"
+    "prepare": "husky"
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.3",
@@ -36,7 +36,9 @@
     "eslint-plugin-react": "^7.37.1",
     "gh-pages": "^6.2.0",
     "globals": "^15.11.0",
+    "husky": "^9.1.6",
     "jest": "^29.7.0",
+    "lint-staged": "^15.2.10",
     "typescript": "~5.3.3",
     "typescript-eslint": "^8.8.1"
   },
