@@ -6,6 +6,7 @@ interface SquareProps {
 }
 
 export function Square({ numbers }: SquareProps) {
+    console.log(numbers)
     const boxLayoutRef = useRef<{ x: number, y: number, width: number, height: number } | null>(null);
     const [currentCoordinates, setCurrentCoordinates] = useState<{ x: number, y: number } | null>();
     const boxRef = useRef<View>(null);
@@ -13,7 +14,7 @@ export function Square({ numbers }: SquareProps) {
     const panResponder = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant: (evt, gestureState) => {
+            onPanResponderGrant: (evt) => {
                 const { pageX, pageY } = evt.nativeEvent;
                 const boxLayout = boxLayoutRef.current;
                 if (boxLayout) {
@@ -22,7 +23,7 @@ export function Square({ numbers }: SquareProps) {
                     setCurrentCoordinates({ x: adjustedX, y: adjustedY });
                 }
             },
-            onPanResponderMove: (evt, gestureState) => {
+            onPanResponderMove: (evt) => {
                 const { pageX, pageY } = evt.nativeEvent;
                 const boxLayout = boxLayoutRef.current;
                 if (boxLayout) {

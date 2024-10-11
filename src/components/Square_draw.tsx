@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, StyleSheet, PanResponder, Text } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
 
@@ -7,6 +7,7 @@ interface SquareProps {
 }
 
 export function Square({ numbers }: SquareProps) {
+    console.log(numbers)
     const [lines, setLines] = useState<{ x1: number, y1: number, x2: number, y2: number }[]>([]);
     const [currentLine, setCurrentLine] = useState<{ x1: number, y1: number, x2: number, y2: number } | null>(null);
     const boxLayoutRef = useRef<{ x: number, y: number, width: number, height: number } | null>(null);
@@ -18,7 +19,7 @@ export function Square({ numbers }: SquareProps) {
     const panResponder = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant: (evt, gestureState) => {
+            onPanResponderGrant: (evt) => {
                 const { pageX, pageY } = evt.nativeEvent;
                 const boxLayout = boxLayoutRef.current;
                 if (boxLayout) {
@@ -31,7 +32,7 @@ export function Square({ numbers }: SquareProps) {
                     }
                 }
             },
-            onPanResponderMove: (evt, gestureState) => {
+            onPanResponderMove: (evt) => {
                 const { pageX, pageY } = evt.nativeEvent;
                 const boxLayout = boxLayoutRef.current;
                 if (boxLayout) {

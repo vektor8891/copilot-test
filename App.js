@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Square } from "./src/components/Square_click";
+import { Square } from "./src/components/Square_draw";
 import React from "react";
 
 export default function App() {
