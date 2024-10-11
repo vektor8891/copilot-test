@@ -31,6 +31,8 @@ jobs:
       # Perform a type check if using typescript before testing
       - name: Typecheck
         run: npx --no-install tsc --noEmit --pretty
+        # Run ESLint
+      - uses: eslint/github-action@v0
       - name: Test
         run: npm run test
   deploy_branch_preview:
