@@ -10,7 +10,9 @@
     "web": "expo start --web",
     "test": "jest --coverage",
     "deploy": "gh-pages -t -d dist",
-    "predeploy": "expo export -p web"
+    "predeploy": "expo export -p web",
+    "lint": "eslint --ext .js,.ts,.tsx,.mdx --max-warnings 0",
+    "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.3",
