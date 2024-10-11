@@ -9,7 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --coverage",
-    "predeploy": "expo build:web",
+    "predeploy": "npx expo export:web",
     "deploy": "gh-pages -d web-build"
   },
   "dependencies": {
