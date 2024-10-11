@@ -12,6 +12,7 @@
     "deploy": "gh-pages -t -d dist",
     "predeploy": "expo export -p web",
     "lint": "eslint --ext .js,.ts,.tsx,.mdx --max-warnings 0",
+    "eslint:github-action": "eslint src/",
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {

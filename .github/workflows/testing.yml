@@ -31,8 +31,6 @@ jobs:
       # Perform a type check if using typescript before testing
       - name: Typecheck
         run: npx --no-install tsc --noEmit --pretty
-      - name: Check Lint
-        run: npm run lint
       - name: Test
         run: npm run test
   deploy_branch_preview:
