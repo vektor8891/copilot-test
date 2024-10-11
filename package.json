@@ -2,12 +2,15 @@
   "name": "copilot-test",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
+  "homepage": "https://vektor8891.github.io/copilot-test",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "predeploy": "expo build:web",
+    "deploy": "gh-pages -d web-build"
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.3",
