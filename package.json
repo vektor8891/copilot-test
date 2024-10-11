@@ -9,8 +9,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --coverage",
-    "predeploy": "expo export --public-url https://vektor8891.github.io/copilot-test",
-    "deploy": "gh-pages -d web-build"
+    "deploy": "gh-pages -t -d dist",
+    "predeploy": "expo export -p web"
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.3",
